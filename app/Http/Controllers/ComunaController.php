@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Comuna;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ComunaController extends Controller
 {
@@ -18,7 +19,7 @@ class ComunaController extends Controller
            ->join('tb_municipio' , 'tb_comuna.muni_codi', '=' , 'tb_municipio.muni_codi')
            ->select('tb_comuna.*' , 'tb_municipio.muni_nomb')
            ->get();
-        return view('comuna.index' , ['comunas' => $comunas]);
+        return view('comuna.index' , ['comunas'=>$comunas]);
     }
 
     /**
